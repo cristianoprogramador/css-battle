@@ -29,9 +29,6 @@ const Home: React.FC = () => {
           <Link to="/aphrodite">
             <button>Aphrodite</button>
           </Link>
-          <Link to="/radium">
-            <button>Radium</button>
-          </Link>
           <Link to="/stitches">
             <button>Stitches</button>
           </Link>

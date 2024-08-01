@@ -1,28 +1,26 @@
 import { useState } from "react";
-import {
-  FaCode,
-  FaCss3Alt,
-  FaReact,
-  FaPaintBrush,
-  FaHeart,
-  FaJsSquare,
-  FaMagic,
-  FaFont,
-  FaSketch,
-} from "react-icons/fa";
+import { CgGirl } from "react-icons/cg";
+import { FaCode } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { MdCss, MdOutlineViewModule } from "react-icons/md";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { RxStitchesLogo } from "react-icons/rx";
+import { SiShell, SiStyledcomponents } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const NAV_ITEMS = [
   { to: "/inline-style", icon: FaCode, label: "Inline Style" },
-  { to: "/css-modules", icon: FaCss3Alt, label: "CSS Modules" },
-  { to: "/tailwind", icon: FaReact, label: "Tailwind" },
-  { to: "/styled-components", icon: FaPaintBrush, label: "Styled Components" },
-  { to: "/emotion", icon: FaHeart, label: "Emotion" },
-  { to: "/css-in-js", icon: FaJsSquare, label: "CSS-in-JS" },
-  { to: "/aphrodite", icon: FaMagic, label: "Aphrodite" },
-  { to: "/radium", icon: FaFont, label: "Radium" },
-  { to: "/stitches", icon: FaSketch, label: "Stitches" },
+  { to: "/css-modules", icon: MdOutlineViewModule, label: "CSS Modules" },
+  { to: "/tailwind", icon: RiTailwindCssFill, label: "Tailwind" },
+  {
+    to: "/styled-components",
+    icon: SiStyledcomponents,
+    label: "Styled Components",
+  },
+  { to: "/emotion", icon: CgGirl, label: "Emotion" },
+  { to: "/css-in-js", icon: MdCss, label: "CSS-in-JS" },
+  { to: "/aphrodite", icon: SiShell, label: "Aphrodite" },
+  { to: "/stitches", icon: RxStitchesLogo, label: "Stitches" },
 ];
 
 export function Header() {
@@ -43,7 +41,7 @@ export function Header() {
       <div className="flex flex-row items-center gap-3">
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
           <Link to={to} key={to} className={iconClass}>
-            <Icon className="hidden lg:flex" title={label} />
+            <Icon className="hidden lg:flex" title={label} size={20} />
             <div className="text-xs">{label}</div>
           </Link>
         ))}
