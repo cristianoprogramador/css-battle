@@ -1,0 +1,13 @@
+/* Apply box-sizing: border-box to all elements to include padding and border in the element's total width and height */
+* {
+  box-sizing: border-box;
+  margin: 0; /* Remove default margin from all elements */
+  padding: 0; /* Remove default padding from all elements */
+}
+
+/* Root-level styles */
+:root {
+  font-synthesis: none; /* Disable font synthesis for a more consistent rendering */
+  text-rendering: optimizeLegibility; /* Improve text rendering for better readability */
+  -webkit-font-smoothing: antialiased; /* Smooth the font edges on WebKit browsers */
+}

@@ -1,33 +1,53 @@
-* {
-  box-sizing: border-box;
-}
-
-:root {
-  min-height: 100vh;
+/* Container for the home page content */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  height: 100vh; /* Set container height to full viewport height */
+  max-width: 100% !important; /* Force max-width to 100% */
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+  font-family: 'Arial', sans-serif; /* Font style */
+  color: #fff; /* Font color */
 }
 
+/* Styles for the home page main content */
 .home {
   text-align: center;
   padding: 2rem;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  width: 90%; /* Ensure the home content is not too wide */
+  max-width: 1200px; /* Limit the maximum width */
 }
 
+/* Container for the buttons */
 .button-container {
   display: flex;
   gap: 1rem;
   justify-content: center;
   margin-top: 2rem;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
 }
 
+/* Styles for the buttons */
 .button-container button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
+  padding: 0.75rem 1.5rem; /* Larger padding for better appearance */
+  font-size: 1rem; /* Font size of the button text */
+  cursor: pointer; /* Change cursor on hover */
+  background-color: #2b6fd5; /* Background color */
+  color: #fff; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition effects */
+}
+
+.button-container button:hover {
+  background-color: #1e4a8f; /* Darker background on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+}
+
+.button-container button:active {
+  transform: translateY(1px); /* Slight push down effect on click */
 }
