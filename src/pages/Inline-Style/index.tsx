@@ -1,64 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Footer } from "../Tailwind/components/Footer";
-import { Header } from "../Tailwind/components/Header";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { data } from "../../utils/mockData";
 
 export function InlineStyle() {
-  const data = [
-    {
-      id: 1,
-      image: "/item1.jpg",
-      title: "Coffee Shop",
-      github: "https://github.com/cristianoprogramador/ignite-coffeeshop",
-      demo: "https://ignite-coffeeshop.vercel.app/",
-    },
-    {
-      id: 2,
-      image: "/item2.jpg",
-      title: "Learning and Laughing",
-      demo: "https://learningandlaughing.com.br/",
-    },
-    {
-      id: 3,
-      image: "/item3.jpg",
-      title: "My Life - Dashboard",
-      github: "https://github.com/cristianoprogramador/mylife_dashboard",
-      demo: "https://mylife-dashboard.vercel.app/",
-    },
-    {
-      id: 4,
-      image: "/item4.jpg",
-      title: "Create Your Burger",
-      github: "https://github.com/cristianoprogramador/createBurger",
-      demo: "https://createburger.com.br/",
-    },
-    {
-      id: 5,
-      image: "/item5.jpg",
-      title: "Clinica Lithá",
-      demo: "https://clinicalitha.com.br/",
-    },
-    {
-      id: 6,
-      image: "/item6.jpg",
-      title: "App-Watch",
-      github: "https://github.com/cristianoprogramador/app_watch_frontend",
-      demo: "https://appwatch.cristianosilvadev.com/",
-    },
-    {
-      id: 7,
-      image: "/item7.jpg",
-      title: "Better-end",
-      github: "https://github.com/cristianoprogramador/better_end_frontend",
-      demo: "https://betterend.cristianosilvadev.com/",
-    },
-  ];
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const text = document.querySelector(".typing-text");
+    if (text) {
+      const letters = text?.textContent?.split("");
+      text.textContent = "";
+      letters?.forEach((letter, index) => {
+        const span = document.createElement("span");
+        span.textContent = letter === " " ? "\u00A0" : letter;
+        span.style.opacity = "0";
+        span.style.display = "inline-block";
+        span.style.animation = `fadeIn 0.5s forwards ${index * 0.05}s`;
+        text.appendChild(span);
+      });
+    }
   }, []);
 
   const getColumnCount = () => {
@@ -70,16 +37,25 @@ export function InlineStyle() {
   const columnCount = getColumnCount();
 
   const gridStyle = {
-    display: "flex",
-    flexWrap: "wrap",
+    display: "grid",
     gap: "2rem",
+    gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
     justifyContent: "center",
+    width: "100%",
   };
 
-  const itemStyle = {
-    flex: `1 0 calc(${100 / columnCount}% - 2rem)`,
-    boxSizing: "border-box",
-  };
+  const fadeInKeyframes = `
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `;
 
   return (
     <div
@@ -94,6 +70,7 @@ export function InlineStyle() {
       }}
     >
       <Header />
+      <style>{fadeInKeyframes}</style>
       <main
         style={{
           display: "flex",
@@ -120,7 +97,6 @@ export function InlineStyle() {
             <div
               key={project.id}
               style={{
-                ...itemStyle,
                 backgroundColor: "white",
                 borderRadius: "0.5rem",
                 boxShadow:
@@ -172,7 +148,7 @@ export function InlineStyle() {
                       style={{
                         backgroundColor: "#F7FAFC",
                         border: "1px solid #E2E8F0",
-                        padding: "0.5rem 1rem",
+                        padding: "4px 8px",
                         borderRadius: "0.375rem",
                         textDecoration: "none",
                         color: "#2D3748",
@@ -196,7 +172,7 @@ export function InlineStyle() {
                       style={{
                         backgroundColor: "#F7FAFC",
                         border: "1px solid #E2E8F0",
-                        padding: "0.5rem 1rem",
+                        padding: "4px 8px",
                         borderRadius: "0.375rem",
                         textDecoration: "none",
                         color: "#2D3748",
@@ -219,7 +195,6 @@ export function InlineStyle() {
         </div>
       </main>
       <Footer />
-
     </div>
   );
 }

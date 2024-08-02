@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgGirl } from "react-icons/cg";
 import { FaCode } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
@@ -7,6 +7,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { RxStitchesLogo } from "react-icons/rx";
 import { SiShell, SiStyledcomponents } from "react-icons/si";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
 
 const NAV_ITEMS = [
   { to: "/inline-style", icon: FaCode, label: "Inline Style" },
@@ -25,35 +26,42 @@ const NAV_ITEMS = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
 
-  const iconClass =
-    "hidden md:flex flex-col items-center justify-center border p-1 rounded-lg hover:border-gray-600";
-
-  const optionClass =
-    "hover:bg-gray-200 py-1 px-2 rounded-lg flex items-center gap-2 z-10";
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className="flex flex-row justify-around w-full text-center py-4 bg-white shadow">
-      <div className="flex flex-row items-center justify-center">
-        <div className="font-semibold text-xl hidden lg:flex">Welcome to:</div>
-        <img src="/css-battle.png" alt="" className="w-40" />
+    <div className={styles.headerContainer}>
+      <div className={styles.headerContent}>
+        {isLargeScreen && (
+          <div className={styles.headerTitle}>Welcome to:</div>
+        )}
+        <img
+          src="/css-battle.png"
+          alt="CSS Battle"
+          className={styles.imgContainer}
+        />
       </div>
-      <div className="flex flex-row items-center gap-3">
+      <div className={styles.headerIcons}>
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
-          <Link to={to} key={to} className={iconClass}>
-            <Icon className="hidden lg:flex" title={label} size={20} />
-            <div className="text-xs">{label}</div>
+          <Link to={to} key={to} className={styles.iconLink}>
+            <Icon title={label} size={20} className={styles.icon} />
+            <div className={styles.label}>{label}</div>
           </Link>
         ))}
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="flex md:hidden border p-3 rounded-lg cursor-pointer hover:bg-gray-200 relative"
+          className={`${styles.dropdownIconContainer}`}
         >
-          <IoIosArrowDown size={15} />
+          <IoIosArrowDown size={15} className={styles.dropdownIcon} />
           {isOpen && (
-            <div className="absolute top-11 w-40 -right-9 flex flex-col text-sm border rounded-md p-1 bg-white shadow-md z-10">
+            <div className={`${styles.dropdown} ${styles.dropdownOpen}`}>
               {NAV_ITEMS.map(({ to, label }) => (
-                <Link to={to} key={to} className={optionClass}>
+                <Link to={to} key={to} className={styles.iconList}>
                   {label}
                 </Link>
               ))}

@@ -1,0 +1,42 @@
+@media (min-width: 768px) {
+  .footerText {
+    font-size: 0.875rem;
+    display: flex;
+  }
+}
+
+.footerTextHidden {
+  display: none;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  background: linear-gradient(to left, #4a5568, #2d3748);
+  border-top: 1px solid #4a5568;
+  color: white;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.iconLink {
+  color: white;
+  transition: color 0.3s;
+}
+
+.iconLink:hover {
+  color: #4299e1;
+}
+
+.icon {
+  font-size: 1.25rem;
+}
