@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import "./style.css";
 import { data } from "../../utils/mockData";
 
 export function Tailwind() {
-
   useEffect(() => {
     const text = document.querySelector(".typing-text");
     if (text) {
@@ -26,7 +25,9 @@ export function Tailwind() {
       <Header />
       <main className="flex flex-col items-center w-full px-4">
         <h1 className="text-3xl font-bold mb-8 inline-flex">
-          <span className="typing-text text-gray-700">Some of my portfolio:</span>
+          <span className="typing-text text-gray-700">
+            Some of my portfolio:
+          </span>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {data.map((project) => (

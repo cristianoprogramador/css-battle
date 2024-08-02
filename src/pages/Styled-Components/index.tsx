@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
-
 import { data } from "../../utils/mockData";
-import styles from "./CSSModules.module.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import {
+  Card,
+  CardContent,
+  CardImage,
+  CardLink,
+  CardTitle,
+  Container,
+  GridContainer,
+  Main,
+  Title,
+  TypingText,
+} from "./styles";
 
-export function CSSModules() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+export function StyledComponents() {
+  const [, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -15,7 +25,7 @@ export function CSSModules() {
   }, []);
 
   useEffect(() => {
-    const text = document.querySelector(`.${styles.typingText}`);
+    const text = document.querySelector(".typing-text");
     if (text) {
       const letters = text?.textContent?.split("");
       text.textContent = "";
@@ -28,62 +38,45 @@ export function CSSModules() {
     }
   }, []);
 
-  const getColumnCount = () => {
-    if (windowWidth >= 1024) return 3;
-    if (windowWidth >= 640) return 2;
-    return 1;
-  };
-
-  const columnCount = getColumnCount();
-
   return (
-    <div className={styles.container}>
+    <Container>
       <Header />
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          <span className={styles.typingText}>Some of my portfolio:</span>
-        </h1>
-        <div
-          className={styles.gridContainer}
-          style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
-        >
+      <Main>
+        <Title>
+          <TypingText className="typing-text">Some of my portfolio:</TypingText>
+        </Title>
+        <GridContainer>
           {data.map((project) => (
-            <div key={project.id} className={styles.card}>
-              <img
-                src={project.image}
-                alt={`${project.title} image`}
-                className={styles.cardImage}
-              />
-              <div className={styles.cardContent}>
-                <h2 className={styles.cardTitle}>{project.title}</h2>
+            <Card key={project.id}>
+              <CardImage src={project.image} alt={`${project.title} image`} />
+              <CardContent>
+                <CardTitle>{project.title}</CardTitle>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   {project.github && (
-                    <a
+                    <CardLink
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.cardLink}
                     >
                       GitHub
-                    </a>
+                    </CardLink>
                   )}
                   {project.demo && (
-                    <a
+                    <CardLink
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={styles.cardLink}
                     >
                       Demo
-                    </a>
+                    </CardLink>
                   )}
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
-        </div>
-      </main>
+        </GridContainer>
+      </Main>
       <Footer />
-    </div>
+    </Container>
   );
 }

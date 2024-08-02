@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { FaYoutube, FaLinkedin, FaGlobe } from "react-icons/fa";
-import styles from "./Footer.module.css";
+import {
+  FooterContainer,
+  FooterIconLink,
+  FooterIcons,
+  FooterText,
+} from "./styles";
 
 export function Footer() {
-  const [isMediumScreen, setIsMediumScreen] = useState(
-    window.innerWidth >= 768
-  );
+  const [, setIsMediumScreen] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     const handleResize = () => setIsMediumScreen(window.innerWidth >= 768);
@@ -14,39 +17,34 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className={styles.footerContainer}>
-      <div
-        className={isMediumScreen ? styles.footerText : styles.footerTextHidden}
-      >
+    <FooterContainer>
+      <FooterText>
         &copy; {new Date().getFullYear()} Cristiano Pereira da Silva. All rights
         reserved.
-      </div>
-      <div className={styles.iconContainer}>
-        <a
+      </FooterText>
+      <FooterIcons>
+        <FooterIconLink
           href="http://www.youtube.com/@cristianoSilvaDev"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.iconLink}
         >
-          <FaYoutube className={styles.icon} title="YouTube" />
-        </a>
-        <a
+          <FaYoutube title="YouTube" />
+        </FooterIconLink>
+        <FooterIconLink
           href="https://www.linkedin.com/in/cristiano-pereira-da-silva-bb991a124/"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.iconLink}
         >
-          <FaLinkedin className={styles.icon} title="LinkedIn" />
-        </a>
-        <a
+          <FaLinkedin title="LinkedIn" />
+        </FooterIconLink>
+        <FooterIconLink
           href="https://cristianosilvadev.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.iconLink}
         >
-          <FaGlobe className={styles.icon} title="Website" />
-        </a>
-      </div>
-    </footer>
+          <FaGlobe title="Website" />
+        </FooterIconLink>
+      </FooterIcons>
+    </FooterContainer>
   );
 }

@@ -1,13 +1,23 @@
 import { useState, useEffect } from "react";
 import { CgGirl } from "react-icons/cg";
 import { FaCode } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import { MdCss, MdOutlineViewModule } from "react-icons/md";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { RxStitchesLogo } from "react-icons/rx";
 import { SiShell, SiStyledcomponents } from "react-icons/si";
-import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
+import {
+  Dropdown,
+  DropdownIcon,
+  DropdownIconContainer,
+  HeaderContainer,
+  HeaderContent,
+  HeaderIcons,
+  HeaderTitle,
+  IconLink,
+  IconList,
+  ImgContainer,
+  Label,
+} from "./styles";
 
 const NAV_ITEMS = [
   { to: "/inline-style", icon: FaCode, label: "Inline Style" },
@@ -35,38 +45,31 @@ export function Header() {
   }, []);
 
   return (
-    <div className={styles.headerContainer}>
-      <div className={styles.headerContent}>
-        {isLargeScreen && <div className={styles.headerTitle}>Welcome to:</div>}
-        <img
-          src="/css-battle.png"
-          alt="CSS Battle"
-          className={styles.imgContainer}
-        />
-      </div>
-      <div className={styles.headerIcons}>
+    <HeaderContainer>
+      <HeaderContent>
+        {isLargeScreen && <HeaderTitle>Welcome to:</HeaderTitle>}
+        <ImgContainer src="/css-battle.png" alt="CSS Battle" />
+      </HeaderContent>
+      <HeaderIcons>
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
-          <Link to={to} key={to} className={styles.iconLink}>
-            <Icon title={label} size={20} className={styles.icon} />
-            <div className={styles.label}>{label}</div>
-          </Link>
+          <IconLink to={to} key={to}>
+            <Icon title={label} size={20} />
+            <Label>{label}</Label>
+          </IconLink>
         ))}
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className={`${styles.dropdownIconContainer}`}
-        >
-          <IoIosArrowDown size={15} className={styles.dropdownIcon} />
+        <DropdownIconContainer onClick={() => setIsOpen(!isOpen)}>
+          <DropdownIcon size={15} />
           {isOpen && (
-            <div className={`${styles.dropdown} ${styles.dropdownOpen}`}>
+            <Dropdown className="open">
               {NAV_ITEMS.map(({ to, label }) => (
-                <Link to={to} key={to} className={styles.iconList}>
+                <IconList to={to} key={to}>
                   {label}
-                </Link>
+                </IconList>
               ))}
-            </div>
+            </Dropdown>
           )}
-        </div>
-      </div>
-    </div>
+        </DropdownIconContainer>
+      </HeaderIcons>
+    </HeaderContainer>
   );
 }
