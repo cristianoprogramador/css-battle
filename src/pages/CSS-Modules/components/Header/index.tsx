@@ -1,28 +1,8 @@
 import { useState, useEffect } from "react";
-import { CgGirl } from "react-icons/cg";
-import { FaCode } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import { MdCss, MdOutlineViewModule } from "react-icons/md";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { RxStitchesLogo } from "react-icons/rx";
-import { SiShell, SiStyledcomponents } from "react-icons/si";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
-
-const NAV_ITEMS = [
-  { to: "/inline-style", icon: FaCode, label: "Inline Style" },
-  { to: "/css-modules", icon: MdOutlineViewModule, label: "CSS Modules" },
-  { to: "/tailwind", icon: RiTailwindCssFill, label: "Tailwind" },
-  {
-    to: "/styled-components",
-    icon: SiStyledcomponents,
-    label: "Styled Components",
-  },
-  { to: "/emotion", icon: CgGirl, label: "Emotion" },
-  { to: "/css-in-js", icon: MdCss, label: "CSS-in-JS" },
-  { to: "/aphrodite", icon: SiShell, label: "Aphrodite" },
-  { to: "/stitches", icon: RxStitchesLogo, label: "Stitches" },
-];
+import { NAV_ITEMS } from "../../../../utils/mockData";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);

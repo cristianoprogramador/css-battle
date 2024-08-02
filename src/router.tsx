@@ -5,6 +5,7 @@ import { Tailwind } from "./pages/Tailwind";
 import { InlineStyle } from "./pages/Inline-Style";
 import { CSSModules } from "./pages/CSS-Modules";
 import { StyledComponents } from "./pages/Styled-Components";
+import { EmotionStyle } from "./pages/Emotion";
 
 const AppRouter: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter: React.FC = () => {
         <Route path="/inline-style" element={<InlineStyle />} />
         <Route path="/css-modules" element={<CSSModules />} />
         <Route path="/styled-components" element={<StyledComponents />} />
+        <Route path="/emotion" element={<EmotionStyle />} />
       </Routes>
     </Router>
   );

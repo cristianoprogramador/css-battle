@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaYoutube, FaLinkedin, FaGlobe } from "react-icons/fa";
 
 export function Footer() {
