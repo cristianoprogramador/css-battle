@@ -23,7 +23,7 @@ const Home: React.FC = () => {
           <Link to="/emotion">
             <button>Emotion</button>
           </Link>
-          <Link to="/css-in-js">
+          {/* <Link to="/css-in-js">
             <button>CSS-in-JS</button>
           </Link>
           <Link to="/aphrodite">
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           </Link>
           <Link to="/stitches">
             <button>Stitches</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

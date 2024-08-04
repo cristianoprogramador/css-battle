@@ -50,7 +50,7 @@ const IconLink = styled(Link)<IconLinkProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #f3f4f6;
+  border: 1px solid #e6e6e6;
   padding: 0.25rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -58,7 +58,7 @@ const IconLink = styled(Link)<IconLinkProps>`
   color: inherit;
 
   &:hover {
-    border-color: gray;
+    border-color: #4b5563;
   }
 `;
 
@@ -136,7 +136,7 @@ export function Header() {
               (e.currentTarget.style.border = "1px solid #4b5563")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.border = "1px solid #f3f4f6")
+              (e.currentTarget.style.border = "1px solid #e6e6e6")
             }
           >
             <Icon title={label} size={20} />
