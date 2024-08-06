@@ -23,15 +23,6 @@ const Home: React.FC = () => {
           <Link to="/emotion">
             <button>Emotion</button>
           </Link>
-          {/* <Link to="/css-in-js">
-            <button>CSS-in-JS</button>
-          </Link>
-          <Link to="/aphrodite">
-            <button>Aphrodite</button>
-          </Link>
-          <Link to="/stitches">
-            <button>Stitches</button>
-          </Link> */}
         </div>
       </div>
     </div>

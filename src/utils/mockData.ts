@@ -67,7 +67,4 @@ export const NAV_ITEMS = [
     label: "Styled Components",
   },
   { to: "/emotion", icon: CgGirl, label: "Emotion" },
-  // { to: "/css-in-js", icon: MdCss, label: "CSS-in-JS" },
-  // { to: "/aphrodite", icon: SiShell, label: "Aphrodite" },
-  // { to: "/stitches", icon: RxStitchesLogo, label: "Stitches" },
 ];
