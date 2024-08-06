@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Dropdown,
   DropdownIcon,
@@ -16,18 +16,11 @@ import { NAV_ITEMS } from "../../../../utils/mockData";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
-
-  useEffect(() => {
-    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <HeaderContainer>
       <HeaderContent>
-        {isLargeScreen && <HeaderTitle>Welcome to:</HeaderTitle>}
+        <HeaderTitle>Welcome to:</HeaderTitle>
         <ImgContainer src="/css-battle.png" alt="CSS Battle" />
       </HeaderContent>
       <HeaderIcons>

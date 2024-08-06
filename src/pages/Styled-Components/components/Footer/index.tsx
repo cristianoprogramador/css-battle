@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { FaYoutube, FaLinkedin, FaGlobe } from "react-icons/fa";
 import {
   FooterContainer,
@@ -8,14 +7,6 @@ import {
 } from "./styles";
 
 export function Footer() {
-  const [, setIsMediumScreen] = useState(window.innerWidth >= 768);
-
-  useEffect(() => {
-    const handleResize = () => setIsMediumScreen(window.innerWidth >= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <FooterContainer>
       <FooterText>

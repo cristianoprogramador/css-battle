@@ -1,6 +1,10 @@
+.footerText {
+  font-size: 0.875rem;
+  display: none;
+}
+
 @media (min-width: 768px) {
   .footerText {
-    font-size: 0.875rem;
     display: flex;
   }
 }

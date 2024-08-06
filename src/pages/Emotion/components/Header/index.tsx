@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../../../../utils/mockData";
@@ -24,14 +24,14 @@ const HeaderContent = styled.div`
   justify-content: center;
 `;
 
-interface HeaderTitleProps {
-  isLargeScreen: boolean;
-}
-
-const HeaderTitle = styled.div<HeaderTitleProps>`
+const HeaderTitle = styled.div`
   font-weight: 600;
   font-size: 1.25rem;
-  display: ${({ isLargeScreen }) => (isLargeScreen ? "flex" : "none")};
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
 
 const HeaderIcons = styled.div`
@@ -41,12 +41,8 @@ const HeaderIcons = styled.div`
   gap: 0.75rem;
 `;
 
-interface IconLinkProps {
-  isLargeScreen: boolean;
-}
-
-const IconLink = styled(Link)<IconLinkProps>`
-  display: ${({ isLargeScreen }) => (isLargeScreen ? "flex" : "none")};
+const IconLink = styled(Link)`
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -60,10 +56,14 @@ const IconLink = styled(Link)<IconLinkProps>`
   &:hover {
     border-color: #4b5563;
   }
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
 
-const DropdownContainer = styled.div<IconLinkProps>`
-  display: ${({ isLargeScreen }) => (isLargeScreen ? "none" : "flex")};
+const DropdownContainer = styled.div`
+  display: flex;
   border: 1px solid #e6e6e6;
   padding: 0.75rem;
   border-radius: 0.5rem;
@@ -72,6 +72,10 @@ const DropdownContainer = styled.div<IconLinkProps>`
 
   &:hover {
     background-color: #e5e7eb;
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -112,33 +116,16 @@ const ImgContainer = styled.img`
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1024);
-
-  useEffect(() => {
-    const handleResize = () => setIsLargeScreen(window.innerWidth >= 1024);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <HeaderContainer>
       <HeaderContent>
-        <HeaderTitle isLargeScreen={isLargeScreen}>Welcome to:</HeaderTitle>
+        <HeaderTitle>Welcome to:</HeaderTitle>
         <ImgContainer src="/css-battle.png" alt="CSS Battle" />
       </HeaderContent>
       <HeaderIcons>
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
-          <IconLink
-            to={to}
-            key={to}
-            isLargeScreen={isLargeScreen}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.border = "1px solid #4b5563")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.border = "1px solid #e6e6e6")
-            }
-          >
+          <IconLink to={to} key={to}>
             <Icon title={label} size={20} />
             <div
               css={css`
@@ -150,24 +137,12 @@ export function Header() {
             </div>
           </IconLink>
         ))}
-        <DropdownContainer
-          isLargeScreen={isLargeScreen}
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <DropdownContainer onClick={() => setIsOpen(!isOpen)}>
           <IoIosArrowDown size={15} />
           {isOpen && (
             <DropdownMenu>
               {NAV_ITEMS.map(({ to, label }) => (
-                <DropdownLink
-                  to={to}
-                  key={to}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.backgroundColor = "#e5e7eb")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.backgroundColor = "white")
-                  }
-                >
+                <DropdownLink to={to} key={to}>
                   {label}
                 </DropdownLink>
               ))}

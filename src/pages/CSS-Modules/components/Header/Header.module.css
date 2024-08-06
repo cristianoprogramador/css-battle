@@ -1,5 +1,3 @@
-/* Header.module.css */
-
 .headerContainer {
   display: flex;
   flex-direction: row;
@@ -56,7 +54,6 @@
 
 .iconList:hover {
   background: #e5e7eb;
-
 }
 
 .dropdown {
@@ -86,7 +83,11 @@
     display: flex;
   }
 
-  .dropdown {
+  .headerTitle {
+    display: block;
+  }
+
+  .dropdownIconContainer {
     display: none;
   }
 }
@@ -99,11 +100,11 @@
   font-size: 0.75rem;
 }
 
-.dropdownIconContainer {
-  display: none;
-}
-
 @media (max-width: 1023px) {
+  .headerTitle {
+    display: none;
+  }
+
   .dropdownIconContainer {
     display: flex;
     border: 1px solid #e6e6e6;

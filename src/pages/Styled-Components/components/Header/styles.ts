@@ -23,6 +23,11 @@ export const HeaderContent = styled.div`
 export const HeaderTitle = styled.div`
   font-weight: 600;
   font-size: 1.25rem;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
 
 export const HeaderIcons = styled.div`

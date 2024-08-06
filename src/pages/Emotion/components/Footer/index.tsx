@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useState, useEffect } from "react";
 import { FaYoutube, FaLinkedin, FaGlobe } from "react-icons/fa";
 
 const FooterContainer = styled.footer`
@@ -17,13 +16,13 @@ const FooterContainer = styled.footer`
   color: white;
 `;
 
-interface FooterTextProps {
-  isMediumScreen: boolean;
-}
-
-const FooterText = styled.div<FooterTextProps>`
+const FooterText = styled.div`
   font-size: 0.875rem;
-  display: ${({ isMediumScreen }) => (isMediumScreen ? "flex" : "none")};
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
 `;
 
 const IconLink = styled.a`
@@ -36,19 +35,9 @@ const IconLink = styled.a`
 `;
 
 export function Footer() {
-  const [isMediumScreen, setIsMediumScreen] = useState(
-    window.innerWidth >= 768
-  );
-
-  useEffect(() => {
-    const handleResize = () => setIsMediumScreen(window.innerWidth >= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <FooterContainer>
-      <FooterText isMediumScreen={isMediumScreen}>
+      <FooterText>
         &copy; {new Date().getFullYear()} Cristiano Pereira da Silva. All rights
         reserved.
       </FooterText>

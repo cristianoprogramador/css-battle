@@ -27,6 +27,18 @@
   justify-content: center;
 }
 
+.gridContainer.one-column {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.gridContainer.two-columns {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gridContainer.three-columns {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .card {
   background-color: white;
   border-radius: 0.5rem;
@@ -101,4 +113,16 @@
   font-weight: bold;
   margin-bottom: 2rem;
   display: inline-flex;
+}
+
+@media (min-width: 640px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

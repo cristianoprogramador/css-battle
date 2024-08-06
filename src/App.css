@@ -1,6 +1,6 @@
 /* Apply box-sizing: border-box to all elements to include padding and border in the element's total width and height */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Includes padding and border in the total width and height of the element  */
   margin: 0; /* Remove default margin from all elements */
   padding: 0; /* Remove default padding from all elements */
 }

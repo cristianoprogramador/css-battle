@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { data } from "../../utils/mockData";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -120,14 +120,6 @@ const CardLink = styled.a`
 `;
 
 export function EmotionStyle() {
-  const [, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   useEffect(() => {
     const text = document.querySelector(".typing-text");
     if (text) {

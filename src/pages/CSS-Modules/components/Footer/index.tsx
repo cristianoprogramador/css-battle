@@ -1,23 +1,10 @@
-import { useState, useEffect } from "react";
 import { FaYoutube, FaLinkedin, FaGlobe } from "react-icons/fa";
 import styles from "./Footer.module.css";
 
 export function Footer() {
-  const [isMediumScreen, setIsMediumScreen] = useState(
-    window.innerWidth >= 768
-  );
-
-  useEffect(() => {
-    const handleResize = () => setIsMediumScreen(window.innerWidth >= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <footer className={styles.footerContainer}>
-      <div
-        className={isMediumScreen ? styles.footerText : styles.footerTextHidden}
-      >
+      <div className={styles.footerText}>
         &copy; {new Date().getFullYear()} Cristiano Pereira da Silva. All rights
         reserved.
       </div>
