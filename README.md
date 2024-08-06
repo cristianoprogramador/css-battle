@@ -44,23 +44,27 @@ To start the development server, run:
 npm run dev
 ```
 
-
 ## Contributing
+
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Make your changes.
-Commit your changes (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/your-feature).
-Open a pull request.
-
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/your-feature`).
+6. Open a pull request.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-GitHub: cristianoprogramador
-LinkedIn: Cristiano Pereira da Silva
-YouTube: Cristiano Silva Dev
+
+- **GitHub:** [cristianoprogramador](https://github.com/cristianoprogramador)
+- **LinkedIn:** [Cristiano Pereira da Silva](https://www.linkedin.com/in/cristiano-pereira-da-silva-bb991a124/)
+- **YouTube:** [Cristiano Silva Dev](https://www.youtube.com/@cristianoSilvaDev)
+
+---
+
 If you found this project helpful, please give it a star ⭐️ on GitHub!
